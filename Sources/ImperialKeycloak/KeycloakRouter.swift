@@ -9,6 +9,7 @@ public class KeycloakRouter: FederatedServiceRouter {
     public let callbackURL: String
     public let accessTokenURL: String
     public let service: OAuthService = .keycloak
+    public let callbackHeaders = HTTPHeaders([("Content-Type", "application/x-www-form-urlencoded")])
     
     public required init(callback: String, completion: @escaping (Request, String) throws -> (EventLoopFuture<ResponseEncodable>)) throws {
         self.tokens = try KeycloakAuth()
